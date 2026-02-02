@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Monthly Performance Dashboard | TBT</title>
+  <meta name="description" content="Interactive historical monthly performance analysis for Bitcoin, Ethereum, and altcoins. Visualize seasonality patterns, halving cycles, and win rates.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-pattern"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <h1>Crypto Monthly Performance</h1>
+    <p class="subtitle">Historical Returns Analysis • Seasonality • Halving Cycles</p>
+  </header>
+  
+  <!-- Asset Selector -->
+  <nav class="asset-selector" id="assetSelector">
+    <!-- Populated by JS -->
+  </nav>
+  
+  <!-- Main Dashboard -->
+  <main class="dashboard">
+    
+    <!-- Monthly Forecast Section - NEW -->
+    <section class="card forecast-card" id="forecastSection">
+      <div class="loading"><div class="spinner"></div></div>
+    </section>
+    
+    <!-- Quick Stats -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Key Statistics</h2>
+      </div>
+      <div class="card-body">
+        <div class="stats-grid" id="statsGrid">
+          <div class="loading"><div class="spinner"></div></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Heatmap -->
+    <section class="card">
+      <div class="card-header">
+        <h2 id="heatmapTitle">Monthly Returns Heatmap</h2>
+        <div class="heatmap-controls">
+          <button class="toggle-btn" id="volatilityToggle">📈 Show Volatility</button>
+          <button class="toggle-btn" id="medianToggle">📊 Use Median</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="heatmap-container">
+          <div class="heatmap" id="heatmap">
+            <div class="loading"><div class="spinner"></div></div>
+          </div>
+        </div>
+        <div class="color-scale">
+          <span class="color-scale-label">-60%</span>
+          <div class="color-scale-bar"></div>
+          <span class="color-scale-label">+100%</span>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background: linear-gradient(135deg, #ffd700, #ff8c00); border: 2px solid #ffd700;"></div>
+            <span>Bitcoin Halving Month</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: rgba(0, 230, 118, 0.8);"></div>
+            <span>Positive Return</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: rgba(255, 71, 87, 0.8);"></div>
+            <span>Negative Return</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Quarterly Performance -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Quarterly Performance</h2>
+      </div>
+      <div class="card-body">
+        <div id="quarterlyTable">
+          <div class="loading"><div class="spinner"></div></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Insights -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Seasonality Insights</h2>
+      </div>
+      <div class="card-body">
+        <div class="insights-grid" id="insightsGrid">
+          <div class="loading"><div class="spinner"></div></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Charts Row -->
+    <div class="charts-row">
+      <!-- Seasonality Chart -->
+      <section class="card">
+        <div class="card-header">
+          <h2 id="seasonalityTitle">Average Return by Month</h2>
+          <button class="toggle-btn" id="seasonalityMedianToggle">📊 Use Median</button>
+        </div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="seasonalityChart"></canvas>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Win Rate Chart -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Monthly Win Rate</h2>
+        </div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="winRateChart"></canvas>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Halving Timeline -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Bitcoin Halving Cycles</h2>
+      </div>
+      <div class="card-body">
+        <div class="timeline" id="halvingTimeline">
+          <div class="loading"><div class="spinner"></div></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Year Comparison -->
+    <section class="card">
+      <div class="card-header">
+        <h2>Year-over-Year Comparison</h2>
+        <div class="comparison-selectors">
+          <select id="year1Select" class="year-select"></select>
+          <span style="color: var(--text-muted);">vs</span>
+          <select id="year2Select" class="year-select"></select>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="cycle-buttons" id="cycleButtons">
+          <!-- Populated by JS -->
+        </div>
+        <div class="comparison-chart">
+          <canvas id="comparisonChart"></canvas>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- Tooltip -->
+  <div class="tooltip" id="tooltip">
+    <div class="tooltip-title"></div>
+    <div class="tooltip-value"></div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <p>📊 Data visualization powered by <a href="#">TBT Analytics</a></p>
+    <p style="margin-top: 0.5rem; font-size: 0.7rem;">
+      Historical performance does not guarantee future results. 
+      Data is for informational purposes only.
+    </p>
+  </footer>
+  
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
