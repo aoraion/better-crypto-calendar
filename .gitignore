@@ -4,3 +4,4 @@ __pycache__/
 data_backup*.json
 data_from_sheet.json
 .DS_Store
+.vercel
