@@ -292,7 +292,7 @@
           "year": 2026,
           "returns": [
             -10,
-            null,
+            -15,
             null,
             null,
             null,
@@ -563,6 +563,23 @@
             -28,
             -11
           ]
+        },
+        {
+          "year": 2026,
+          "volatility": [
+            -23,
+            -24,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
         }
       ],
       "months": [
@@ -825,7 +842,7 @@
           "year": 2026,
           "returns": [
             -17,
-            null,
+            -20,
             null,
             null,
             null,
@@ -1033,7 +1050,7 @@
           "year": 2026,
           "volatility": [
             -34,
-            null,
+            -29,
             null,
             null,
             null,
@@ -1326,7 +1343,7 @@
           "year": 2026,
           "returns": [
             -10,
-            null,
+            -19,
             null,
             null,
             null,
@@ -1551,7 +1568,7 @@
           "year": 2026,
           "volatility": [
             -25,
-            null,
+            -32,
             null,
             null,
             null,
@@ -1787,7 +1804,7 @@
           "year": 2026,
           "returns": [
             -7,
-            null,
+            -15,
             null,
             null,
             null,
@@ -1961,7 +1978,7 @@
           "year": 2026,
           "volatility": [
             -21,
-            null,
+            -32,
             null,
             null,
             null,
@@ -2254,7 +2271,7 @@
           "year": 2026,
           "returns": [
             -7,
-            null,
+            -15,
             null,
             null,
             null,
@@ -2479,7 +2496,7 @@
           "year": 2026,
           "volatility": [
             -26,
-            null,
+            -32,
             null,
             null,
             null,
@@ -2772,7 +2789,7 @@
           "year": 2026,
           "returns": [
             -11,
-            null,
+            -15,
             null,
             null,
             null,
@@ -2997,7 +3014,7 @@
           "year": 2026,
           "volatility": [
             -25,
-            null,
+            -32,
             null,
             null,
             null,
@@ -3252,7 +3269,7 @@
           "year": 2026,
           "returns": [
             -16,
-            null,
+            -19,
             null,
             null,
             null,
@@ -3443,7 +3460,7 @@
           "year": 2026,
           "volatility": [
             -31,
-            null,
+            -32,
             null,
             null,
             null,
@@ -3698,7 +3715,7 @@
           "year": 2026,
           "returns": [
             -9,
-            null,
+            -19,
             null,
             null,
             null,
@@ -3889,7 +3906,7 @@
           "year": 2026,
           "volatility": [
             -32,
-            null,
+            -32,
             null,
             null,
             null,
