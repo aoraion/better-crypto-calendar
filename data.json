@@ -293,8 +293,8 @@
           "returns": [
             -10,
             -15,
-            null,
-            null,
+            2,
+            12,
             null,
             null,
             null,
@@ -569,8 +569,8 @@
           "volatility": [
             -23,
             -24,
-            null,
-            null,
+            17,
+            21,
             null,
             null,
             null,
@@ -843,8 +843,8 @@
           "returns": [
             -17,
             -20,
-            null,
-            null,
+            7,
+            7,
             null,
             null,
             null,
@@ -1051,8 +1051,8 @@
           "volatility": [
             -34,
             -29,
-            null,
-            null,
+            25,
+            22,
             null,
             null,
             null,
@@ -1344,8 +1344,8 @@
           "returns": [
             -10,
             -19,
-            null,
-            null,
+            0,
+            3,
             null,
             null,
             null,
@@ -1356,7 +1356,7 @@
             null
           ],
           "green": 0,
-          "red": 1
+          "red": 3
         }
       ],
       "volatility": [
@@ -1569,8 +1569,8 @@
           "volatility": [
             -25,
             -32,
-            null,
-            null,
+            11,
+            9,
             null,
             null,
             null,
@@ -1805,8 +1805,8 @@
           "returns": [
             -7,
             -15,
-            null,
-            null,
+            0,
+            2,
             null,
             null,
             null,
@@ -1817,7 +1817,7 @@
             null
           ],
           "green": 0,
-          "red": 1
+          "red": 3
         }
       ],
       "volatility": [
@@ -1979,8 +1979,8 @@
           "volatility": [
             -21,
             -32,
-            null,
-            null,
+            -7,
+            6,
             null,
             null,
             null,
@@ -2272,8 +2272,8 @@
           "returns": [
             -7,
             -15,
-            null,
-            null,
+            -2,
+            4,
             null,
             null,
             null,
@@ -2284,7 +2284,7 @@
             null
           ],
           "green": 0,
-          "red": 1
+          "red": 3
         }
       ],
       "volatility": [
@@ -2497,8 +2497,8 @@
           "volatility": [
             -26,
             -32,
-            null,
-            null,
+            -13,
+            11,
             null,
             null,
             null,
@@ -2790,8 +2790,8 @@
           "returns": [
             -11,
             -15,
-            null,
-            null,
+            -1,
+            2,
             null,
             null,
             null,
@@ -2801,8 +2801,8 @@
             null,
             null
           ],
-          "green": 0,
-          "red": 1
+          "green": 1,
+          "red": 2
         }
       ],
       "volatility": [
@@ -3015,8 +3015,8 @@
           "volatility": [
             -25,
             -32,
-            null,
-            null,
+            -11,
+            10,
             null,
             null,
             null,
@@ -3270,8 +3270,8 @@
           "returns": [
             -16,
             -19,
-            null,
-            null,
+            -1,
+            2,
             null,
             null,
             null,
@@ -3282,7 +3282,7 @@
             null
           ],
           "green": 0,
-          "red": 1
+          "red": 3
         }
       ],
       "volatility": [
@@ -3461,8 +3461,8 @@
           "volatility": [
             -31,
             -32,
-            null,
-            null,
+            -11,
+            10,
             null,
             null,
             null,
@@ -3716,8 +3716,8 @@
           "returns": [
             -9,
             -19,
-            null,
-            null,
+            -1,
+            2,
             null,
             null,
             null,
@@ -3728,7 +3728,7 @@
             null
           ],
           "green": 0,
-          "red": 1
+          "red": 3
         }
       ],
       "volatility": [
@@ -3907,8 +3907,8 @@
           "volatility": [
             -32,
             -32,
-            null,
-            null,
+            -11,
+            10,
             null,
             null,
             null,
