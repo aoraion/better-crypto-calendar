@@ -196,13 +196,28 @@ async function init() {
         const avgSquaredDiff = squaredDiffs.length > 0 ? squaredDiffs.reduce((a, b) => a + b, 0) / squaredDiffs.length : 0;
         const stdDev = Math.sqrt(avgSquaredDiff);
         
-        // Calculate volatility for this month
-        const volValues = Object.values(volatilityData).map(y => y[m]).filter(v => v !== null && v !== undefined);
-        const avgVol = volValues.length > 0 ? volValues.reduce((a, b) => Math.abs(a) + Math.abs(b), 0) / volValues.length : 0;
+        // Volatility is a range magnitude, not a directional return.  Keep the
+        // signed raw series for the annual grid, but aggregate its absolute values
+        // for the summary row so Average/Median both report total volatility.
+        const volValues = Object.values(volatilityData)
+          .map(y => y[m])
+          .filter(v => v !== null && v !== undefined)
+          .map(Math.abs);
+        const avgVol = volValues.length > 0
+          ? volValues.reduce((sum, value) => sum + value, 0) / volValues.length
+          : 0;
+        const sortedVol = [...volValues].sort((a, b) => a - b);
+        const medianVol = sortedVol.length > 0
+          ? (sortedVol.length % 2 === 0
+            ? (sortedVol[sortedVol.length / 2 - 1] + sortedVol[sortedVol.length / 2]) / 2
+            : sortedVol[Math.floor(sortedVol.length / 2)])
+          : 0;
         
         statistics[m] = {
           average: Math.round(avg * 100) / 100,
           median: Math.round(median * 100) / 100,
+          averageVolatility: Math.round(avgVol * 100) / 100,
+          medianVolatility: Math.round(medianVol * 100) / 100,
           win_rate: monthValues.length > 0 ? Math.round((wins / monthValues.length) * 100) : 0,
           volatility: Math.round(avgVol * 100) / 100,
           stdDev: Math.round(stdDev * 100) / 100,
@@ -217,7 +232,9 @@ async function init() {
         greenRedData: greenRedData,
         statistics: statistics,
         average: asset.average || [],
-        median: asset.median || []
+        median: asset.median || [],
+        averageVolatility: Array.from({ length: 12 }, (_, index) => statistics[index + 1].averageVolatility),
+        medianVolatility: Array.from({ length: 12 }, (_, index) => statistics[index + 1].medianVolatility)
       };
     });
     
@@ -389,9 +406,12 @@ function renderHeatmap() {
   });
   html += '<div class="heatmap-header heatmap-gr-header">G/R</div>';
   
-  // Summary row (average or median based on toggle)
+  // Summary row: returns use the published return aggregates; volatility uses
+  // the corresponding absolute range aggregate for every asset.
   const summaryLabel = useMedian ? 'Med' : 'Avg';
-  const summaryData = useMedian ? assetData.median : assetData.average;
+  const summaryData = showVolatility
+    ? (useMedian ? assetData.medianVolatility : assetData.averageVolatility)
+    : (useMedian ? assetData.median : assetData.average);
   
   html += '<div class="heatmap-cycle heatmap-summary-row"></div>';
   html += `<div class="heatmap-year heatmap-summary-row">${summaryLabel}</div>`;
@@ -401,11 +421,14 @@ function renderHeatmap() {
     const bgColor = getReturnColor(value, showVolatility);
     const textColor = getTextColor(value);
     const displayVal = formatValue(value);
+    const formattedValue = displayVal === '—'
+      ? '—'
+      : `${!showVolatility && value > 0 ? '+' : ''}${displayVal}%`;
     
     html += `
       <div class="heatmap-cell heatmap-summary-row ${value === null ? 'null' : ''}"
            style="background: ${bgColor}; color: ${textColor}">
-        <span class="value">${displayVal !== '—' ? (value > 0 ? '+' : '') + displayVal + '%' : '—'}</span>
+        <span class="value">${formattedValue}</span>
       </div>
     `;
   }
