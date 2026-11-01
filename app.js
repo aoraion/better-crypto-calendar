@@ -247,14 +247,14 @@ async function init() {
     forecastData = {
       date: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
       assets: {
-        BTC: { monthlyClose: 11, monthlyVol: 25, quarterlyClose: 10 },
-        ETH: { monthlyClose: 1, monthlyVol: 27, quarterlyClose: 22 },
-        TOTAL2: { monthlyClose: 0, monthlyVol: 2, quarterlyClose: 18 },
-        TOTAL3: { monthlyClose: 3, monthlyVol: 17, quarterlyClose: 11 },
-        OTHERS: { monthlyClose: -3, monthlyVol: -18, quarterlyClose: 5 },
-        TOTALES: { monthlyClose: 11, monthlyVol: 26, quarterlyClose: 30 },
-        TOTALE50: { monthlyClose: 0, monthlyVol: 3, quarterlyClose: 23 },
-        TOTALE100: { monthlyClose: 0, monthlyVol: 8, quarterlyClose: 27 }
+        BTC: { monthlyClose: 9, monthlyVol: 18, quarterlyClose: 10 },
+        ETH: { monthlyClose: -1, monthlyVol: -31, quarterlyClose: 22 },
+        TOTAL2: { monthlyClose: 10, monthlyVol: 38, quarterlyClose: 18 },
+        TOTAL3: { monthlyClose: 0, monthlyVol: 22, quarterlyClose: 11 },
+        OTHERS: { monthlyClose: 2, monthlyVol: 4, quarterlyClose: 5 },
+        TOTALES: { monthlyClose: 8, monthlyVol: 13, quarterlyClose: 30 },
+        TOTALE50: { monthlyClose: 13, monthlyVol: 39, quarterlyClose: 23 },
+        TOTALE100: { monthlyClose: 11, monthlyVol: 49, quarterlyClose: 27 }
       },
       alerts: {
         btcD: 46.47,
